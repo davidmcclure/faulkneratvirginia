@@ -67,23 +67,23 @@
 				</h3>
 			</xsl:for-each>
 			
-			<p>
-				<img src="/entire_recording.png" id="entire_recording" alt="Play entire recording" />
-				<div class="entire"> 
-				<xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
+      <p>
+        <img src="/entire_recording.png" id="entire_recording" alt="Play entire recording" />
+        <div class="entire"> 
+        <xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
 				
-				<script language="JavaScript" type="text/javascript">
-					try {
-						QT_WriteOBJECT(
-						'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',
-						'autoplay', 'false',
-						'scale', 'tofit');
-					}
-					catch (e) {
-						//document.write(e);
-					}</script>
-				</div>
-			</p>
+        <script language="JavaScript" type="text/javascript">
+          try {
+            QT_WriteOBJECT(
+            'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',
+            'autoplay', 'false',
+            'scale', 'tofit');
+          }
+          catch (e) {
+            //document.write(e);
+          }</script>
+        </div>
+      </p>
 			
 			<hr/>
 			<xsl:apply-templates select="div2"/>
@@ -98,26 +98,30 @@
 		<!-- need to grab the audio file name -->
 		<xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
 		
-		<script language="JavaScript" type="text/javascript">
-			try {
-				QT_WriteOBJECT(
-				'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',
-				'autoplay', 'false',
-				'scale', 'tofit',
-				'starttime','<xsl:value-of select="@start"/>:00',
-				'endtime','<xsl:value-of select="@end"/>:00');
-		}
-		catch (e) {
-			//document.write(e);
-		}</script>
+    <!--<script language="JavaScript" type="text/javascript">-->
+      <!--try {-->
+        <!--QT_WriteOBJECT(-->
+        <!--'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',-->
+        <!--'autoplay', 'false',-->
+        <!--'scale', 'tofit',-->
+        <!--'starttime','<xsl:value-of select="@start"/>:00',-->
+        <!--'endtime','<xsl:value-of select="@end"/>:00');-->
+    <!--}-->
+    <!--catch (e) {-->
+      <!--//document.write(e);-->
+    <!--}</script>-->
+
+    <div class="clip">
+      <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}"></i></p>
+    </div>
 		
 		<!-- AddThis Button BEGIN -->
-		<a class="addthis_button"
-			href="http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4b141d5f4ca01146"
-			addthis:url="" id="{@id}">
-			<img src="http://s7.addthis.com/static/btn/sm-share-en.gif" width="83" height="16"
-				alt="Bookmark and Share" style="border:0"/>
-		</a>
+		<!--<a class="addthis_button"-->
+			<!--href="http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4b141d5f4ca01146"-->
+			<!--addthis:url="" id="{@id}">-->
+			<!--<img src="http://s7.addthis.com/static/btn/sm-share-en.gif" width="83" height="16"-->
+				<!--alt="Bookmark and Share" style="border:0"/>-->
+		<!--</a>-->
 		
 		<a href="#top" class="top_button"><img src="{$path}/top.png" alt=" link to top of the page" title="top" /></a>
 		
