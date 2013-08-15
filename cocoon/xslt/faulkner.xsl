@@ -69,19 +69,26 @@
 			
       <p>
         <img src="/entire_recording.png" id="entire_recording" alt="Play entire recording" />
-        <div class="entire"> 
+        <div class="entireclip"> 
         <xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
 				
-        <script language="JavaScript" type="text/javascript">
-          try {
-            QT_WriteOBJECT(
-            'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',
-            'autoplay', 'false',
-            'scale', 'tofit');
-          }
-          catch (e) {
-            //document.write(e);
-          }</script>
+        <!--<script language="JavaScript" type="text/javascript">-->
+          <!--try {-->
+            <!--QT_WriteOBJECT(-->
+            <!--'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',-->
+            <!--'autoplay', 'false',-->
+            <!--'scale', 'tofit');-->
+          <!--}-->
+          <!--catch (e) {-->
+            <!--//document.write(e);-->
+        <!--}</script>-->
+
+          <!-- TODO: How to get the filenames? -->
+          <audio controls="true" preload="auto">
+            <source src="http://faulkner.lib.virginia.edu/static/audio/XXXX.mp3" type="audio/mpeg; codecs='mp3';"></source>
+            <source src="http://faulkner.lib.virginia.edu/static/audio/XXXX.ogg" type="audio/ogg; codecs='vorbis';"></source>
+          </audio>
+
         </div>
       </p>
 			
@@ -111,6 +118,7 @@
       <!--//document.write(e);-->
     <!--}</script>-->
 
+    <!-- TODO|dev -->
     <div class="clip">
       <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}"></i></p>
     </div>
