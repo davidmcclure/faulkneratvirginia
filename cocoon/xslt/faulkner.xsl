@@ -22,22 +22,25 @@
 				</title>
 				<link rel="stylesheet" type="text/css" href="{$path}style.css" media="screen,projection"/>
 				<link type="text/css" href="{$path}print.css" rel="stylesheet" media="print" />				
-				<script type="text/javascript" src="{$path}javascript/jquery-1.3.2.min.js">//</script>
-				<script type="text/javascript" src="{$path}javascript/AC_Quicktime.js">//</script>
-				<script type="text/javascript">
-					$(document).ready(function(){
-						// hide entire
-						$('.entire').hide();
+        <script type="text/javascript" src="{$path}javascript/jquery-1.3.2.min.js">//</script>
+        <script type="text/javascript" src="{$path}javascript/audio.js">//</script>
 
-						$("img#entire_recording").click(function(){
-							$(this).toggle(function(){
-								$('.player-line').hide();
-								$('.entire').show();
-							});
-						});
+				<!--<script type="text/javascript" src="{$path}javascript/AC_Quicktime.js">//</script>-->
+				<!--<script type="text/javascript">-->
+					<!--$(document).ready(function(){-->
+						<!--// hide entire-->
+						<!--$('.entire').hide();-->
+
+						<!--$("img#entire_recording").click(function(){-->
+							<!--$(this).toggle(function(){-->
+								<!--$('.player-line').hide();-->
+								<!--$('.entire').show();-->
+							<!--});-->
+						<!--});-->
 						
-					});
-				</script>
+					<!--});-->
+				<!--</script>-->
+
 			</head>
 			<body>		
 				
@@ -69,8 +72,13 @@
 			
       <p>
         <img src="/entire_recording.png" id="entire_recording" alt="Play entire recording" />
-        <div class="entireclip"> 
-        <xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
+        <div class="entireclip">
+
+          <xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
+
+          <xsl:variable name="basename">
+              <xsl:value-of select="translate(/TEI.2/teiHeader/fileDesc/publicationStmt/idno[@type='analog tape'], '-', '')" />
+          </xsl:variable>
 				
         <!--<script language="JavaScript" type="text/javascript">-->
           <!--try {-->
@@ -83,10 +91,10 @@
             <!--//document.write(e);-->
         <!--}</script>-->
 
-          <!-- TODO: How to get the filenames? -->
-          <audio controls="true" preload="auto">
-            <source src="http://faulkner.lib.virginia.edu/static/audio/XXXX.mp3" type="audio/mpeg; codecs='mp3';"></source>
-            <source src="http://faulkner.lib.virginia.edu/static/audio/XXXX.ogg" type="audio/ogg; codecs='vorbis';"></source>
+          <!-- TODO|dev -->
+          <audio controls="true" preload="auto" id="{$basename}">
+            <source src="http://faulkner.lib.virginia.edu/static/audio/{$basename}.mp3" type="audio/mpeg; codecs='mp3';"></source>
+            <source src="http://faulkner.lib.virginia.edu/static/audio/{$basename}.ogg" type="audio/ogg; codecs='vorbis';"></source>
           </audio>
 
         </div>
@@ -120,7 +128,7 @@
 
     <!-- TODO|dev -->
     <div class="clip">
-      <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}"></i></p>
+      <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}">[play]</i></p>
     </div>
 		
 		<!-- AddThis Button BEGIN -->
@@ -131,7 +139,7 @@
 				<!--alt="Bookmark and Share" style="border:0"/>-->
 		<!--</a>-->
 		
-		<a href="#top" class="top_button"><img src="{$path}/top.png" alt=" link to top of the page" title="top" /></a>
+		<a href="#top" class="top_button"><img src="{$path}top.png" alt=" link to top of the page" title="top" /></a>
 		
 		</div>
 		

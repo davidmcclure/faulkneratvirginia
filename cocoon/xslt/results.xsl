@@ -33,9 +33,10 @@
 				<link type="text/css" href="/style.css" rel="stylesheet" media="screen,projection"/>
 				<link type="text/css" href="/colorbox.css" rel="stylesheet" media="screen"/>
 				
-				<script type="text/javascript" language="javascript" src="javascript/jquery-1.3.2.min.js"/>
-				<script type="text/javascript" language="javascript" src="javascript/sort_results.js"/>				
-				<script type="text/javascript" language="javascript" src="javascript/AC_Quicktime.js">//</script>
+        <script type="text/javascript" language="javascript" src="javascript/jquery-1.3.2.min.js">//</script>
+        <script type="text/javascript" language="javascript" src="javascript/sort_results.js">//</script>
+        <script type="text/javascript" src="{$path}javascript/audio.js">//</script>
+				<!--<script type="text/javascript" language="javascript" src="javascript/AC_Quicktime.js">//</script>-->
 			</head>
 			<body>
 				
@@ -101,7 +102,7 @@
 
             <!-- TODO|dev -->
             <div class="clip">
-              <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}"></i></p>
+              <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}">[play]</i></p>
             </div>
 
 						<div>
