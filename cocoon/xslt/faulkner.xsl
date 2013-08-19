@@ -24,23 +24,6 @@
 				<link type="text/css" href="{$path}print.css" rel="stylesheet" media="print" />				
         <script type="text/javascript" src="{$path}javascript/jquery-1.3.2.min.js">//</script>
         <script type="text/javascript" src="{$path}javascript/audio.js">//</script>
-
-				<!--<script type="text/javascript" src="{$path}javascript/AC_Quicktime.js">//</script>-->
-				<!--<script type="text/javascript">-->
-					<!--$(document).ready(function(){-->
-						<!--// hide entire-->
-						<!--$('.entire').hide();-->
-
-						<!--$("img#entire_recording").click(function(){-->
-							<!--$(this).toggle(function(){-->
-								<!--$('.player-line').hide();-->
-								<!--$('.entire').show();-->
-							<!--});-->
-						<!--});-->
-						
-					<!--});-->
-				<!--</script>-->
-
 			</head>
 			<body>		
 				
@@ -79,19 +62,7 @@
           <xsl:variable name="basename">
               <xsl:value-of select="translate(/TEI.2/teiHeader/fileDesc/publicationStmt/idno[@type='analog tape'], '-', '')" />
           </xsl:variable>
-				
-        <!--<script language="JavaScript" type="text/javascript">-->
-          <!--try {-->
-            <!--QT_WriteOBJECT(-->
-            <!--'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',-->
-            <!--'autoplay', 'false',-->
-            <!--'scale', 'tofit');-->
-          <!--}-->
-          <!--catch (e) {-->
-            <!--//document.write(e);-->
-        <!--}</script>-->
 
-          <!-- TODO|dev -->
           <audio controls="true" preload="auto" id="{$basename}">
             <source src="http://faulkner.lib.virginia.edu/static/audio/{$basename}.mp3" type="audio/mpeg; codecs='mp3';"></source>
             <source src="http://faulkner.lib.virginia.edu/static/audio/{$basename}.ogg" type="audio/ogg; codecs='vorbis';"></source>
@@ -110,36 +81,14 @@
 		<a name="{@id}"/>
 		
 		<div class="player-line">		
-		<!-- need to grab the audio file name -->
-		<xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
-		
-    <!--<script language="JavaScript" type="text/javascript">-->
-      <!--try {-->
-        <!--QT_WriteOBJECT(-->
-        <!--'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="replace($filename, 'read', '')"/>.mp4', '300', ' 16', '',-->
-        <!--'autoplay', 'false',-->
-        <!--'scale', 'tofit',-->
-        <!--'starttime','<xsl:value-of select="@start"/>:00',-->
-        <!--'endtime','<xsl:value-of select="@end"/>:00');-->
-    <!--}-->
-    <!--catch (e) {-->
-      <!--//document.write(e);-->
-    <!--}</script>-->
 
-    <!-- TODO|dev -->
-    <div class="clip">
-      <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}">[play]</i></p>
-    </div>
-		
-		<!-- AddThis Button BEGIN -->
-		<!--<a class="addthis_button"-->
-			<!--href="http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4b141d5f4ca01146"-->
-			<!--addthis:url="" id="{@id}">-->
-			<!--<img src="http://s7.addthis.com/static/btn/sm-share-en.gif" width="83" height="16"-->
-				<!--alt="Bookmark and Share" style="border:0"/>-->
-		<!--</a>-->
-		
-		<a href="#top" class="top_button"><img src="{$path}top.png" alt=" link to top of the page" title="top" /></a>
+      <xsl:variable name="filename" select="//idno[@type='digital audio filename']"/>
+
+      <div class="clip">
+        <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}">[play]</i></p>
+      </div>
+
+      <a href="#top" class="top_button"><img src="{$path}top.png" alt=" link to top of the page" title="top" /></a>
 		
 		</div>
 		

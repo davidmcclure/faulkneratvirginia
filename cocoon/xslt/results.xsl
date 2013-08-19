@@ -36,7 +36,6 @@
         <script type="text/javascript" language="javascript" src="javascript/jquery-1.3.2.min.js">//</script>
         <script type="text/javascript" language="javascript" src="javascript/sort_results.js">//</script>
         <script type="text/javascript" src="{$path}javascript/audio.js">//</script>
-				<!--<script type="text/javascript" language="javascript" src="javascript/AC_Quicktime.js">//</script>-->
 			</head>
 			<body>
 				
@@ -85,22 +84,6 @@
 							</xsl:choose>
 						</a>
 
-						<!--<div><p>-->
-							<!--<script language="JavaScript" type="text/javascript">-->
-							<!--try {-->
-							<!--QT_WriteOBJECT(-->
-							<!--'http://qss.itc.virginia.edu/medialab/faulkner_audio/<xsl:value-of select="str[@name='doc_id']"/>.mp4', ' 300 ', ' 16 ', '',-->
-							<!--'autoplay', 'false',-->
-							<!--'scale', 'tofit',-->
-							<!--'starttime','<xsl:value-of select="replace(str[@name='start'], '\.', ':')"/>',-->
-							<!--'endtime','<xsl:value-of select="replace(str[@name='end'], '\.', ':')"/>');-->
-							<!--}-->
-							<!--catch (e) {-->
-							<!--//document.write(e);-->
-							<!--}</script></p>-->
-						<!--</div>-->
-
-            <!-- TODO|dev -->
             <div class="clip">
               <p><i class="icon-play-sign" id="{$filename}" data-start="{@start}" data-end="{@end}">[play]</i></p>
             </div>
